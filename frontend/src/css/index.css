@@ -42,7 +42,7 @@ h6 {
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 2.2em;
   line-height: 1.5;
 }
 
@@ -65,12 +65,13 @@ button {
   font-size: 1em;
   font-weight: 500;
   padding: 0.6em 1.2em;
-  border: 1px solid transparent;
   border-radius: 8px;
-  background-color: var(--primary);
+  border: 0;
   color: var(--bg-100);
   cursor: pointer;
   transition: border-color 0.25s, background-color 0.25s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: var(--primary);
 }
 
 button:hover {

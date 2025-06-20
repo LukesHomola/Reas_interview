@@ -1,0 +1,89 @@
+.offer_left_form_section {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.offer_form_container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.offer_form_title {
+  padding: 1rem;
+}
+
+.offer_form_section {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.offer_form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.offer_form {
+  display: flex;
+  gap: 1rem;
+}
+.offer_form section {
+  display: flex;
+  flex-direction: column;
+}
+.offer_form label {
+  font-size: 0.9em;
+}
+.offer_form input {
+  border: none;
+  padding: 0.3rem;
+  border-radius: 4px;
+  border: 1.95px solid var(--color-gray);
+}
+.offer_form input:hover {
+  padding: 0.3rem;
+  cursor: pointer;
+  border: 1.95px solid var(--color-black);
+  background-color: var(--bg-600);
+}
+.offer_form input:focus {
+  border: 1.95px solid var(--color-black);
+  background-color: var(--bg-600);
+}
+
+.offer_form input:user-valid {
+  border: 1.95px solid green;
+}
+.offer_form input:invalid {
+  border: 1.95px solid rgb(233, 139, 17);
+}
+.offer_form input:user-invalid {
+  border: 1.95px solid darkred;
+}
+
+.offer_form_submit {
+  color: var(--text-900);
+  background-color: var(--accent-800);
+}
+.offer_form_submit:hover {
+  background-color: var(--accent-900);
+}
+
+.offer_svg_container img {
+  max-width: 100%;
+}
+
+.offer_svg_container {
+  margin: 0 auto;
+}
+@media screen and (min-width: 1200px) {
+  .offer_form_wrap {
+    height: 90svh;
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
