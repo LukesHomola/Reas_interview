@@ -1,0 +1,37 @@
+.app_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5rem;
+}
+
+.app_title_container,
+.app_todo_card_container {
+  padding-left: 5rem;
+}
+
+/* Cards */
+.app_todo_card_container {
+  max-width: 90%;
+}
+.app_todo_card_container h4 {
+  padding-bottom: 1rem;
+}
+
+.app_todo_card_grid_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  gap: 5rem;
+}
+.app_todo_card {
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.app_todo_card h3 {
+  padding-bottom: 1rem;
+}
+.app_todo_card ul li {
+  margin-left: 2rem;
+  padding-bottom: 0.5rem;
+}

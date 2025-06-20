@@ -1,0 +1,35 @@
+header {
+  padding-bottom: 3rem;
+}
+.header_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  color: var(--text-white) !important;
+  background-color: var(--primary-900);
+}
+.header_container_left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+header a:hover {
+  cursor: pointer;
+  color: var(--accent-800);
+}
+
+.nav_active {
+  color: var(--accent-900);
+}
+.nav_placeholder {
+  color: rgb(105, 103, 103);
+}

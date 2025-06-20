@@ -1,0 +1,77 @@
+:root {
+  /* Text Color Scale */
+  --text-900: #051c1f;
+  --text-800: #173235;
+  --text-700: #2b484b;
+  --text-600: #3f5e61;
+  --text-500: #537476;
+  --text-400: #7a989a;
+  --text-300: #a1bcbc;
+  --text-200: #c8dfdf;
+  --text-100: #eefbfd;
+  --text-white: #f8f4f4;
+
+  --text-900-rgb: 5, 28, 31;
+  --text-opacity-80: rgba(var(--text-900-rgb), 0.8);
+  --text-opacity-60: rgba(var(--text-900-rgb), 0.6);
+  --text-opacity-40: rgba(var(--text-900-rgb), 0.4);
+
+  /* Background Scale */
+  --bg-900: #ffffff;
+  --bg-800: #ffffff;
+  --bg-700: #ffffff;
+  --bg-600: #ffffff;
+  --bg-500: #ffffff;
+  --bg-400: #ffffff;
+  --bg-300: #ffffff;
+  --bg-200: #ffffff;
+  --bg-100: #ffffff;
+
+  /* Primary Color Scale */
+  --primary-900: #032133;
+  --primary-800: #0a314b;
+  --primary-700: #124366;
+  --primary-600: #1c5884;
+  --primary-500: #286e9e;
+  --primary-400: #558fb2;
+  --primary-300: #82afc7;
+  --primary-200: #b5d1df;
+  --primary-100: #e6f0f7;
+
+  --primary-rgb: 3, 33, 51;
+  --primary-opacity-80: rgba(var(--primary-rgb), 0.8);
+  --primary-opacity-60: rgba(var(--primary-rgb), 0.6);
+  --primary-opacity-40: rgba(var(--primary-rgb), 0.4);
+
+  /* Secondary Color Scale */
+  --secondary-900: #5e9bcb;
+  --secondary-800: #6ba7d2;
+  --secondary-700: #76b2d9;
+  --secondary-600: #80bbe0;
+  --secondary-500: #84b5ed;
+  --secondary-400: #a4ccf1;
+  --secondary-300: #c3def5;
+  --secondary-200: #e2effa;
+  --secondary-100: #f5faff;
+
+  --secondary-rgb: 132, 181, 237;
+  --secondary-opacity-80: rgba(var(--secondary-rgb), 0.8);
+  --secondary-opacity-60: rgba(var(--secondary-rgb), 0.6);
+  --secondary-opacity-40: rgba(var(--secondary-rgb), 0.4);
+
+  /* Accent Color Scale */
+  --accent-900: rgb(66, 245, 221);
+  --accent-800: #00b7c4;
+  --accent-700: #00cfe0;
+  --accent-600: #1de6f2;
+  --accent-500: #4cf0f8;
+  --accent-400: #80f6fb;
+  --accent-300: #affbfc;
+  --accent-200: #d8feff;
+  --accent-100: #f4ffff;
+
+  --accent-rgb: 0, 207, 224;
+  --accent-opacity-80: rgba(var(--accent-rgb), 0.8);
+  --accent-opacity-60: rgba(var(--accent-rgb), 0.6);
+  --accent-opacity-40: rgba(var(--accent-rgb), 0.4);
+}
