@@ -37,31 +37,25 @@
 .offer_form label {
   font-size: 0.9em;
 }
-.offer_form input {
+
+.offer_form_section_input_container section {
+  padding-bottom: 1rem;
+}
+.offer_form_section_input input {
   border: none;
-  padding: 0.3rem;
-  border-radius: 4px;
+  padding: 0.5rem;
+  border-radius: 2px;
   border: 1.95px solid var(--color-gray);
 }
 .offer_form input:hover {
-  padding: 0.3rem;
   cursor: pointer;
-  border: 1.95px solid var(--color-black);
-  background-color: var(--bg-600);
-}
-.offer_form input:focus {
   border: 1.95px solid var(--color-black);
   background-color: var(--bg-600);
 }
 
 .offer_form input:user-valid {
   border: 1.95px solid green;
-}
-.offer_form input:invalid {
-  border: 1.95px solid rgb(233, 139, 17);
-}
-.offer_form input:user-invalid {
-  border: 1.95px solid darkred;
+  background-color: transparent;
 }
 
 .offer_form_submit {

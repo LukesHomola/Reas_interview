@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 import "../css/Header.css";
 
@@ -13,16 +13,25 @@ function Header() {
               <p className="font-caption">interview projekt</p>
             </section>
             <nav>
-              <a href="/" className="nav_active">
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "nav_active" : "")}
+                end
+              >
                 Domů
-              </a>
-              <a href="/chci-nabidku">Získat nabídku</a>
-              <a href="/" className="nav_placeholder">
+              </NavLink>
+              <NavLink
+                to="/chci-nabidku"
+                className={({ isActive }) => (isActive ? "nav_active" : "")}
+              >
+                Získat nabídku
+              </NavLink>
+              <NavLink to="/" className="nav_placeholder">
                 Kupuji
-              </a>
-              <a href="/" className="nav_placeholder">
+              </NavLink>
+              <NavLink to="/" className="nav_placeholder">
                 Ceny nemovitostí
-              </a>
+              </NavLink>
             </nav>
           </div>
           <section>
