@@ -5,9 +5,24 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000, // volitelné – výchozí je 5173, ale ty chceš 3000
+    port: 3000,
     proxy: {
       "/lead": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/districts": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/regions": {
+        target: "http://localhost:4000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/real-estates": {
         target: "http://localhost:4000",
         changeOrigin: true,
         secure: false,

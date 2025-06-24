@@ -1,39 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FormData } from "../interfaces";
 import "../css/offerForm.css";
 import Select from "react-select";
 
 import svgFormGif from "../assets/svg_form.gif";
 
-const estateTypeOptions = [
-  { value: "Byt", label: "Byt" },
-  { value: "Rodinný dům", label: "Rodinný dům" },
-  { value: "Chata", label: "Chata" },
-  { value: "Pozemek", label: "Pozemek" },
-];
-
-const regionOptions = [
-  { value: "Praha", label: "Praha" },
-  { value: "Středočeský", label: "Středočeský" },
-  { value: "Jihomoravský", label: "Jihomoravský" },
-];
-
-const districtOptions = {
-  Praha: [
-    { value: "Praha 1", label: "Praha 1" },
-    { value: "Praha 2", label: "Praha 2" },
-  ],
-  Středočeský: [
-    { value: "Benešov", label: "Benešov" },
-    { value: "Beroun", label: "Beroun" },
-  ],
-  Jihomoravský: [
-    { value: "Brno-město", label: "Brno-město" },
-    { value: "Znojmo", label: "Znojmo" },
-  ],
+const submitAlertBar = () => {
+  return (
+    <div className="offer_alert_bar">
+      <h3>Děkujeme za vyplnění formuláře. </h3>
+      <p>brzy se Vám ozveme.</p>
+    </div>
+  );
 };
 
 function OfferForm() {
+  const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     EstateType: "",
     FullName: "",
@@ -42,7 +24,27 @@ function OfferForm() {
     Region: "",
     District: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+
+  const resetForm = () => {
+    setFormData({
+      EstateType: "",
+      FullName: "",
+      Phone: "",
+      Email: "",
+      Region: "",
+      District: "",
+    });
+  };
+
+  const [regions, setRegions] = useState<{ value: string; label: string }[]>(
+    []
+  );
+  const [districts, setDistricts] = useState<
+    { value: string; label: string }[]
+  >([]);
+  const [realEstates, setRealEstates] = useState<
+    { value: string; label: string }[]
+  >([]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -50,8 +52,44 @@ function OfferForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const currentDistricts =
-    districtOptions[formData.Region as keyof typeof districtOptions] || [];
+  useEffect(() => {
+    fetch("/real-estates")
+      .then((res) => res.json())
+      .then((data) =>
+        setRealEstates(
+          data.map((estate: { value: string }) => ({
+            value: estate.value,
+            label: estate.value,
+          }))
+        )
+      );
+  }, []);
+
+  useEffect(() => {
+    fetch("/regions")
+      .then((res) => res.json())
+      .then((data) =>
+        setRegions(
+          data.map((region: { name: string }) => ({
+            value: region.name,
+            label: region.name,
+          }))
+        )
+      );
+  }, []);
+
+  useEffect(() => {
+    if (!formData.Region) {
+      setDistricts([]);
+      return;
+    }
+
+    fetch(`/districts?region=${encodeURIComponent(formData.Region)}`)
+      .then((res) => res.json())
+      .then((data: string[]) =>
+        setDistricts(data.map((d) => ({ value: d, label: d })))
+      );
+  }, [formData.Region]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,12 +109,20 @@ function OfferForm() {
     }
   };
 
-  if (submitted) {
-    return <p className="success">Děkujeme! Brzy se vám ozveme.</p>;
-  }
+  useEffect(() => {
+    if (submitted) {
+      resetForm();
+      const timeout = setTimeout(() => {
+        setSubmitted(false);
+      }, 2000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [submitted]);
 
   return (
     <div className="offer_form_wrap">
+      {submitted && submitAlertBar()}
       <div className="offer_left_form_section">
         <div className="offer_form_container">
           <div className="offer_form_title">
@@ -94,8 +140,8 @@ function OfferForm() {
                 </label>
 
                 <Select
-                  options={estateTypeOptions}
-                  value={estateTypeOptions.find(
+                  options={realEstates}
+                  value={realEstates.find(
                     (opt) => opt.value === formData.EstateType
                   )}
                   onChange={(selected) =>
@@ -115,10 +161,8 @@ function OfferForm() {
                   <span style={{ color: "red" }}>*</span>
                 </label>
                 <Select
-                  options={regionOptions}
-                  value={regionOptions.find(
-                    (opt) => opt.value === formData.Region
-                  )}
+                  options={regions}
+                  value={regions.find((opt) => opt.value === formData.Region)}
                   onChange={(selected) =>
                     setFormData({
                       ...formData,
@@ -127,23 +171,18 @@ function OfferForm() {
                   }
                   placeholder="Zvol typ nemovitosti"
                   isClearable
-                  isDisabled={!formData.EstateType}
+                  isDisabled={!formData.EstateType && formData.Region === ""}
                 />
               </section>
 
               <section className="offer_form_section_select">
-                <label
-                  onClick={() => {
-                    console.log("kraj array:", districtOptions);
-                    console.log("current", currentDistricts);
-                  }}
-                >
+                <label>
                   <strong>Okres</strong> nemovitosti
                   <span style={{ color: "red" }}>*</span>
                 </label>
                 <Select
-                  options={currentDistricts}
-                  value={currentDistricts.find(
+                  options={districts}
+                  value={districts.find(
                     (opt) => opt.value === formData.District
                   )}
                   onChange={(selected) =>
@@ -154,7 +193,7 @@ function OfferForm() {
                   }
                   placeholder="Zvol okres"
                   isClearable
-                  isDisabled={!formData.Region}
+                  isDisabled={!formData.Region && formData.District === ""}
                 />
               </section>
 
@@ -210,7 +249,6 @@ function OfferForm() {
           </section>
         </div>
       </div>
-
       <div className="offer_svg_container">
         {" "}
         <img src={svgFormGif} alt="svg_img" className="offer_svg" />
