@@ -1,0 +1,6 @@
+FROM mongo:7
+
+COPY ./backend/data /data
+COPY ./backend/init.sh /docker-entrypoint-initdb.d/init.sh
+
+RUN chmod +x /docker-entrypoint-initdb.d/init.sh
