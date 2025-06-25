@@ -18,6 +18,6 @@ server.use(RealEstateRoutes.routes());
 
 /* Server connection */
 const PORT = process.env.PORT || 4000;
-server.listen(PORT, () => {
-  console.log(`🚀 Server běží na http://localhost:${PORT}`);
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 Server běží na http://0.0.0.0:${PORT}`);
 });

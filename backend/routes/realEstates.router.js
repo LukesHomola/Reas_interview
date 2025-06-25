@@ -10,6 +10,8 @@ router.get("/", async (ctx) => {
     const data = await EstateType.find().select("label value");
     ctx.body = data;
   } catch (err) {
+    console.error("❌ Chyba při načtení real-estates:", err.message);
+
     ctx.status = 500;
     ctx.body = { error: "Chyba při získávání typů nemovitostí" };
   }

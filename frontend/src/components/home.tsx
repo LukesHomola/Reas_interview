@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "../css/home.css";
 import "../css/colors.css";
 

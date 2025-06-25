@@ -7,7 +7,7 @@ import "./css/colors.css";
 
 import Header from "./components/header";
 import Home from "./components/home";
-import OfferForm from "./components/OfferForm";
+import OfferForm from "./components/offerForm";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
