@@ -24,5 +24,4 @@ dist-ssr
 *.sw?
 
 .env
-backend/data/
 !/backend/data_default/
